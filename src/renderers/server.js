@@ -3,13 +3,16 @@ import ReactDOMServer from 'react-dom/server';
 
 import App from 'components/App';
 
+import utils from '../services/utils'
+
 export async function serverRenderer() {
   const initialData = {
-    appName: 'Reactful',
+    appName: 'Stars Match',
+    starInit: utils.random(1,9)
   };
 
   const pageData = {
-    title: `Hello ${initialData.appName}`,
+    title: `${initialData.appName}`,
   };
 
   return Promise.resolve({
