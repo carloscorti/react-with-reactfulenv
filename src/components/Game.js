@@ -44,17 +44,21 @@ const Game = (props) => {
   }
 
   return (
+
     <div className="game">
       <div className="help">
-        Pick 1 or more numbers that sum to the number of stars
+        <p className="neon" 
+            data-text="Pick one or more numbers that sum to the number of stars">
+              Pick one or more numbers that sum to the number of stars
+        </p>
       </div>
       <div className="body">
         <div className="left">
-          <StarsDisplay
-            count={stars}
-            isFinish={isFinish}
-            reset={props.newGame}
-          />
+            <StarsDisplay
+              count={stars}
+              isFinish={isFinish}
+              reset={props.newGame}
+            />
         </div>
         <div className="right">
           {utils.range(1, 9).map(number =>
@@ -67,7 +71,10 @@ const Game = (props) => {
           )}
         </div>
       </div>
-      <div className="timer">Time Remaining: {time}</div>
+      <div className="timer">
+        <p className="neon usedanimation" data-text={`Time Remaining: ${time}`}>
+          Time Remaining: {time}
+        </p></div>
     </div>
   );
 };

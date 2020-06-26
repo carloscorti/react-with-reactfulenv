@@ -6,13 +6,24 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title><%- pageData.title %></title>
-  <link rel="shortcut icon" href="/favicon.ico" />
+  <link rel="shortcut icon" type="image/png" href="/favicon.png" />
   <link rel="stylesheet" href="/bundles/<%- gVars['main'][0] -%>">
   <script type="text/javascript">
     window.__R_DATA = <%- serialize({ initialData }, { isJSON: true }); %>
   </script>
 </head>
 <body>
+  <h1>
+    <span>S</span>
+    <span>t</span>
+    <span>a</span>
+    <span>r</span>
+    <span>s</span>
+    <span>G</span>
+    <span>a</span>
+    <span>m</span>
+    <span>e</span>
+  </h1>
   <div id="root"><%- initialMarkup -%></div>
   <script src="/bundles/<%- gVars['vendor'] -%>" type="text/javascript"></script>
   <script src="/bundles/<%- gVars['main'][1] -%>" type="text/javascript"></script>

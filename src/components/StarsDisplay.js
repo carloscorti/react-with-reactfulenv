@@ -11,11 +11,11 @@ const StarsDisplay = props => {
           style={{color: props.isFinish === "timeout" ? "red" : "green"}}>
           {props.isFinish === "timeout" ? "Time Out :(" : "Nice¡¡¡"}
         </div>
-        <button onClick={props.reset}>Play Again</button>
+        <button className="play" onClick={props.reset}>Play Again</button>
       </div>
     );
   }
-  return (<>{utils.range(1, props.count).map(starId => (<div key={starId} className="star"></div>))}</>);
+  return (<div className="starcontainer">{utils.range(1, props.count).map(starId => (<div key={starId} className="star"></div>))}</div>);
 };
 
 export default StarsDisplay;
