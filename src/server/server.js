@@ -41,6 +41,6 @@ app.get('/', async (req, res) => {
   }
 });
 
-app.listen(config.port, config.host, () => {
-  console.info(`Running on ${config.host}:${config.port}...`);
+app.listen(config.port, () => {
+  console.info(`Running on port:${config.port}...`);
 });
