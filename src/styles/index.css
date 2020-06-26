@@ -5,6 +5,11 @@
   src: url(/fonts/neon.ttf)
 }
 
+@font-face{
+  font-family: 'neon-high';
+  src: url(/fonts/neon-high.ttf)
+}
+
 :root {
   --color-main: #333;
   --color-background: #18191f;
@@ -19,19 +24,7 @@
   padding: 0;
   margin: 0;
   box-sizing: border-box;
-  /* overflow-x: hidden; */
 }
-
-/* body {
-  color: var(--color-main);
-} */
-
-/* * {
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
-} */
-
 
 body {
   display: flex;
@@ -47,7 +40,6 @@ h1 {
   color: var(--color-main);
   font-size: 5em;
 }
-
 
 h1 span {
   display: table-cell;
@@ -98,7 +90,7 @@ h1 span:nth-child(9) {
     filter: blur(2px);
     text-shadow: 0 0 10px #00b3ff,
                 0 0 20px #00b3ff,
-                0 0 40px #00b3ff;
+                0 0 30px #00b3ff;
                 /* 0 0 80px #00b3ff; */
                 /* 0 0 100px #00b3ff; */
                 /* 0 0 200px #00b3ff; */
@@ -112,15 +104,6 @@ h1 span:nth-child(9) {
     text-shadow: none;
   }
 }
-
-/* #root {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-  background: var(--color-background); 
-} */
 
 p.neon {
   position: relative;
@@ -164,19 +147,16 @@ p.neon:before {
 }
 
 .help {
-  /* color: #666; */
   margin: 10px;
   text-align: center;
 }
 
 .left {
   display: flex;
-  /* flex-flow: row wrap; */
   justify-content: center;
   align-items: center;
   text-align: center;
   width: 50%;
-  /* border: thin solid #ddd; */
   box-shadow: -1px -1px 1px rgba(225,225,225,0.03),
               4px 4px 6px rgba(0,0,0,0.2),
               inset -1px -1px 1px rgba(225,225,225,0.03),
@@ -187,7 +167,6 @@ p.neon:before {
   text-align: center;
   padding: 10px;
   width: 50%;
-  /* border: thin solid #ddd; */
   box-shadow: -1px -1px 1px rgba(225,225,225,0.03),
               4px 4px 6px rgba(0,0,0,0.2),
               inset -1px -1px 1px rgba(225,225,225,0.03),
@@ -208,7 +187,6 @@ p.neon:before {
 }
 
 .number {
-  /* background-color: #eee; */
   position: relative;
   color: var(--color-number);
   border: none;
@@ -237,16 +215,8 @@ p.neon:before {
   background: rgba(225,225,225,0.04);
 }
 
-/* box-shadow: -1px -1px 1px rgba(225,225,225,0.03),
-4px 4px 6px rgba(0,0,0,0.2),
-inset -1px -1px 1px rgba(225,225,225,0.03),
-inset 4px 4px 6px rgba(0,0,0,0.2); */
-
 .number:focus, .number:active {
   outline: none;
-  /* border: thin solid #ddd; */
-  /* box-shadow: 0px 0px 2px rgba(225,225,225,0.05),
-              inset 4px 4px 6px rgba(0,0,0,0.2); */
 }
 
 .usedanimation {
@@ -273,6 +243,7 @@ inset 4px 4px 6px rgba(0,0,0,0.2); */
 
 .game-done {
   height: 80%;
+  width: 100%;
   position: relative;
   display: flex;
   flex-direction: column;
@@ -281,9 +252,19 @@ inset 4px 4px 6px rgba(0,0,0,0.2); */
 }
 
 .game-done .message {
-  font-size: 250%;
-  font-weight: bold;
+  font-size: 2.2em;
+  font-family: 'neon-high', sans-serif;
   margin: 15px;
+  color: var(--color-neon);
+  animation: animateDone 2s infinite;
+
+}
+
+@keyframes animateDone {
+  40%{
+    color: var(--color-main);
+    text-shadow: none;
+  }
 }
 
 .starcontainer {
@@ -297,7 +278,8 @@ i {
 
 button.play {
   position: relative;
-  padding: 8%;
+  height: 30%;
+  width: 60%;
   font-family: 'Quicksand', 'sans-serif';
   font-size: 1em;
   font-weight: bold;
@@ -326,16 +308,30 @@ button.play:before {
 
 button.play:hover{
   color: var(--color-neon);
-  /* background: var(--color-star); */
-  /* box-shadow: 0 0 10px var(--color-star),
-              0 0 40px var(--color-star),
-              0 0 80px var(--color-star); */
   background: #2196f3;
   box-shadow: 0 0 10px #2196f3,
               0 0 40px #2196f3,
               0 0 80px #2196f3;
   transition: 0.2s;
-
 }
 
+@media (max-width: 1050px) {
+  button.play {
+    color: var(--color-neon);
+    background: #2196f3;
+    box-shadow: 0 0 10px #2196f3,
+                0 0 40px #2196f3,
+                0 0 60px #2196f3;
+  }
+}
+
+@media (max-width: 320px) {
+  h1 {
+    font-size: 4em;
+  }
+
+  p.neon {
+    font-size: 1em;
+  }
+}
 

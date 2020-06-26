@@ -8,8 +8,9 @@ const StarsDisplay = props => {
       <div className="game-done">
         <div 
           className="message"
-          style={{color: props.isFinish === "timeout" ? "red" : "green"}}>
-          {props.isFinish === "timeout" ? "Time Out :(" : "Nice¡¡¡"}
+          style={{textShadow: props.isFinish === "timeout" ? 
+          "0 0 10px red, 0 0 20px red, 0 0 40px red, 0 0 60px red" : "0 0 10px green, 0 0 20px green, 0 0 40px green, 0 0 60px green"}}>
+          {props.isFinish === "timeout" ? "Time Out" : "Nice"}
         </div>
         <button className="play" onClick={props.reset}>Play Again</button>
       </div>

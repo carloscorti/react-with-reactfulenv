@@ -4,18 +4,20 @@
   "private": true,
   "scripts": {
     "eslint": "eslint \"src/**/*.js\"",
-    "start": "concurrently \"npm run dev:server\" \"npm run dev:bundle\"",
+    "dev-start": "concurrently \"npm run dev:server\" \"npm run dev:bundle\"",
     "test": "jest",
     "dev:server": "cross-env NODE_PATH=./src nodemon --exec \"babel-node src/server/server.js\" --ignore .reactful.json --ignore public/",
     "dev:bundle": "webpack -wd",
     "verify-tests": "jest --coverage",
-    "build:react": "cross-env NODE_ENV=production webpack --progress -p",
+    "build:react": "cross-env NODE_ENV=production webpack --config webpack.config.prod --progress -p",
     "build:node": "babel src -d build --config-file ./babel-node.config.js --copy-files",
     "build:all": "npm install && npm run build:react && npm run build:node",
     "prod:start": "cross-env NODE_ENV=production NODE_PATH=./build pm2 start -i max build/server/server.js --update-env --name reactful-envProd",
     "prod:stop": "pm2 stop reactful-envProd",
     "prod:reload": "pm2 reload --update-env reactful-envProd",
-    "prod:logs": "pm2 logs --update-env reactful-envProd"
+    "prod:logs": "pm2 logs --update-env reactful-envProd",
+    "heroku-postbuild": "npm run build:node && npm run build:react",
+    "start": "cross-env NODE_ENV=production NODE_PATH=./build pm2-runtime start -i max build/server/server.js --update-env --name reactful-envProd"
   },
   "jest": {
     "modulePaths": [
@@ -38,12 +40,14 @@
     "@babel/runtime": "^7.9.6",
     "babel-loader": "^8.1.0",
     "body-parser": "^1.19.0",
+    "clean-webpack-plugin": "^3.0.0",
     "cross-env": "^7.0.2",
     "css-loader": "^3.5.3",
     "ejs": "^3.1.2",
     "express": "^4.17.1",
     "mini-css-extract-plugin": "^0.9.0",
     "morgan": "^1.10.0",
+    "optimize-css-assets-webpack-plugin": "^5.0.3",
     "pm2": "^4.4.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
@@ -52,7 +56,8 @@
     "style-loader": "^1.2.1",
     "webpack": "^4.43.0",
     "webpack-chunk-hash": "^0.6.0",
-    "webpack-cli": "^3.3.11"
+    "webpack-cli": "^3.3.11",
+    "webpack-merge": "^4.2.2"
   },
   "devDependencies": {
     "@babel/node": "^7.8.7",
