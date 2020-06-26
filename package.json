@@ -21,7 +21,7 @@
     "prod:reload": "pm2 reload --update-env reactful-envProd",
     "prod:logs": "pm2 logs --update-env reactful-envProd",
     "heroku-postbuild": "npm run build:node && npm run build:react",
-    "start": "cross-env NODE_ENV=production NODE_PATH=./build pm2-runtime start -i max build/server/server.js --update-env --name reactful-envProd"
+    "start": "cross-env NODE_ENV=production NODE_PATH=./build pm2-runtime start -i max build/server/server.js --name reactful-envProd"
   },
   "jest": {
     "modulePaths": [
